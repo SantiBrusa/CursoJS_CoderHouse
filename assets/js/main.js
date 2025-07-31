@@ -6,7 +6,7 @@ const servicios = [
   { nombre: "Asesoramiento armado de PC", precio: 7500 },
 ];
 
-function mostrarServicios() {
+const mostrarServicios = () => {
   let msj = "Servivios disponibles:\n";
   for (let i = 0; i < servicios.length; i++) {
     msj += `${i+1}. ${servicios[i].nombre} - $${servicios[i].precio}\n`;
