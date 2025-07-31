@@ -1,83 +1,48 @@
-// console.log('funciona')
+const servicios = [
+  { nombre: "Limpieza", precio: 10000 },
+  { nombre: "Instalacion SO", precio: 8000 },
+  { nombre: "Instalacion programas", precio: 8000 },
+  { nombre: "Actualizacion de hardware", precio: 15000 },
+  { nombre: "Asesoramiento armado de PC", precio: 7500 },
+];
 
-// prompy --> simular un input
+function mostrarServicios() {
+  let msj = "Servivios disponibles:\n";
+  for (let i = 0; i < servicios.length; i++) {
+    msj += `${i+1}. ${servicios[i].nombre} - $${servicios[i].precio}\n`;
+  }
+  return msj; 
+}
 
-// consola --> simular que se devuelve em html
+function simulacion() {
+  alert("Bienvenido a ServiTec")
 
-// prompt("Ingresa un numero");
-// console.log("Hola");
-// alert("Tu numero es");
+  let nombre = prompt("Como te llamas?")
+  let equipo = prompt("Que equipo desea reparar? (Notebook, consola, PC)")
 
-// Para crear variables: let y const
+  let opciones = mostrarServicios();
+  let opcion = prompt(opciones + "\n Elige un numero del 1 al " + servicios.length);
 
-// iniciador, nombre, =, valor
+  if (opcion >= 1 && opcion <= servicios.length) {
+    let elegido = servicios[opcion-1];
+    let msj = `Hola ${nombre}, seleccionaste:\n` +
+              `Equipo: ${equipo}\n` +
+              `Servicio: ${elegido.nombre}\n` +
+              `Precio: $${elegido.precio}\n\n` +
+              `Confirma el Servicio?`
+    
+    let confirmar = confirm(msj);
 
-// let. Puedo cambiar cuando quiera el valor
-// const. No puedo cambiar el valor
+    if (confirmar){
+      alert("Te contactare pronto, att: ServiTec.");
+    } else {
+      alert("Cancelado");
+    }
 
-let nombre = "Juan";
+    console.log("Datos: ", nombre, equipo, elegido.nombre, elegido.precio);
+  } else {
+    alert("Opcion Invalida, intentelo de nuevo");
+  }
+}
 
-const apellido = "perez";
-
-console.log(nombre);
-
-console.log(apellido);
-
-nombre = "Cruz";
-
-console.log(nombre);
-
-// // Prompt
-
-// let nomPrompt = prompt("Ingresa un nombre");
-
-// // Operadores // Concatenar String
-
-// // let saludo = "hola " + nomPrompt + " como estas?";
-
-// // console.log(saludo);
-
-// // template literals
-// // backsticks ``
-
-// let saludoPro = `hola ${nomPrompt} como estas?`;
-
-// console.log(saludoPro);
-
-// Operadores matematicos
-
-let n1 = 9;
-let n2 = 2;
-
-console.log(n1 + n2);
-console.log(n1 - n2);
-console.log(n1 * n2);
-console.log(n1 / n2);
-
-console.log(n1 % n2); // devuelve el resto
-
-// Booleanos
-// Operadores de comparacion
-
-let x = 12;
-let z = 16;
-
-// < > == !=
-
-console.log(x != z);
-
-console.log("---------");
-
-let a1 = 12;
-
-let a2 = "12";
-
-// Comparacion simple
-console.log(a1 == a2);
-
-console.log(a1 != a2);
-
-// Comparacion estricta
-console.log(a1 === a2);
-
-console.log(a1 !== a2);
+simulacion();
